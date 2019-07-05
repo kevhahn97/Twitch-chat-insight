@@ -47,17 +47,17 @@ for chatting in data:
     if len(chatting) < length_minimum:
         continue
 
-    # 2. filter characters
-    if is_contain_other_character(chatting, filter_regex):
+    # 2. check simple sentence
+    if is_simple_sentence(chatting):
         continue
 
-    # 3. check simple sentence
-    if is_simple_sentence(chatting):
+    # 0. filter characters
+    if is_contain_other_character(chatting, filter_regex):
         continue
 
     chat_list.append(chatting + "\n")
 
-    # 4. check question
+    # 3. check question
     if not is_question(chatting):
         continue
 
