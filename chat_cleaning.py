@@ -1,4 +1,5 @@
 import codecs
+import re
 
 length_minimum = 4
 set_minimum = 3
@@ -36,6 +37,7 @@ for chatting in data:
         chatting = chatting[:-1]
     if len(chatting) < length_minimum:
         continue
+    chatting = re.sub(r"[^!@#$%^&*(),.?\":{}|`~<>\[\]\-_=+\\/;'a-zA-Z0-9\u3131-\u318E\uAC00-\uD7A3\u1100-\u11f9\s]+", " ", chatting)
     if is_simple_sentence(chatting):
         continue
     chat_list.append(chatting + "\n")
